@@ -3,6 +3,7 @@ package main
 // Import the fmt for formatting strings
 // Import os so we can read environment variables from the system
 import (
+	"cosmicseed/middle"
 	"fmt"
 )
 
@@ -11,4 +12,6 @@ func main() {
 	fmt.Println("hello, welcome zhangxiaolei image!")
 	fmt.Println("来了老弟！！！！")
 	// fmt.Println("BRANCH_NAME:", os.Getenv("branch"))
+	loginurl, _ := middle.Config.GetValue("hris", "loginurl")
+	fmt.Println("loginurl: --->>>>", loginurl)
 }
