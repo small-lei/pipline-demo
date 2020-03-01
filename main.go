@@ -3,15 +3,20 @@ package main
 // Import the fmt for formatting strings
 // Import os so we can read environment variables from the system
 import (
-	"cosmicseed/middle"
 	"fmt"
+	"io/ioutil"
 )
 
 func main() {
 	fmt.Println("Hello, Kubernetes！I'm from Jenkins CI！")
 	fmt.Println("hello, welcome zhangxiaolei image!")
 	fmt.Println("来了老弟！！！！")
-	// fmt.Println("BRANCH_NAME:", os.Getenv("branch"))
-	loginurl, _ := middle.Config.GetValue("hris", "loginurl")
-	fmt.Println("loginurl: --->>>>", loginurl)
+
+	//1、一次性读取文件内容,还有一个 ReadAll的函数，也能读取
+	data, err := ioutil.ReadFile("./conf/config.ini")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
 }
